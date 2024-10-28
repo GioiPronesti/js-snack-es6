@@ -54,9 +54,31 @@ const teams = [
 
 */
 
-// 1 genero un numero random (1-10) lo assegno alla variabile randomNumber
-const minValue = 2;
-const maxValue = 100;
+const FootballTeams = [];
 
-let randomNunber = Math.floor(Math.random() * (maxValue - minValue) + minValue);
-console.log(randomNunber);
+for (let i = 0; i < teams.length; i++) {
+  const team = teams[i];
+
+  team.points = randomNumbersFromMinToMax(0, 110);
+  team.fouls_taken = randomNumbersFromMinToMax(0, 30);
+
+  const newTeam = {
+    name: team.name,
+    fouls: team.fouls_taken,
+  };
+
+  FootballTeams.push(newTeam);
+
+  // console.log(team)
+}
+
+console.log(FootballTeams);
+
+// 1 genero un numero random (1-10) lo assegno alla variabile randomNumber
+
+function randomNumbersFromMinToMax(min, max) {
+  const minCeiled = Math.ceil(min); //arrotonda al minimo numero intero più alto
+  const maxFloored = Math.floor(max); //arrotonda al max numero intero più basso
+  return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled);
+  // The maximum is inclusive and the minimum is inclusive
+}
